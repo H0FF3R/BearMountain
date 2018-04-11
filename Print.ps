@@ -1,0 +1,16 @@
+# This is used to print files from a specific folder a specified number of times
+
+$files = Get-ChildItem #Put the folder path here
+
+#Walks through the path and ask you how many times to print each
+foreach($file in $files)
+{
+  Write-Host $file
+
+  [int]$amount = Read-Host "Enter the amount of times to print"
+    While ($amount -gt 0)
+    {
+      Start-Proccess -Filepath $file.FullName -Verb Print
+      $amount--
+    }
+}
